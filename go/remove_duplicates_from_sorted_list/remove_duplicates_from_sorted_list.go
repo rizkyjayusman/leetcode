@@ -39,18 +39,23 @@ func main() {
 	ln.Insert(1)
 	ln.Insert(1)
 	ln.Insert(2)
-	removeDuplicates(ln)
+	ln.Insert(3)
+	ln.Insert(3)
+
+	nln := removeDuplicates(ln)
+	Show(&nln)
 }
 
 func removeDuplicates(ln List) List {
-	nln := List{}
-	x := -101
-	for ln.head != nil {
-		if ln.head.info.(int) > x {
-			nln.Insert(ln.head.info)
-		}
-		x = ln.head.info.(int)
+	return remove(ln, -101)
+}
+
+func remove(ln List, x int) List {
+	fmt.Println(x)
+	o := ln.head.info.(int)
+	if o > x {
 		ln.head = ln.head.next
 	}
-	return nln
+
+	return remove(ln, o)
 }
