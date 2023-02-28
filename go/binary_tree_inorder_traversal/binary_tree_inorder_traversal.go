@@ -9,24 +9,29 @@ type TreeNode struct {
 }
 
 func main() {
-	tn := TreeNode{}
-	tn.Val = 1
-
-	tn1R := TreeNode{}
-	tn1R.Val = 2
-
-	tn1R2L := TreeNode{}
-	tn1R.Left = &tn1R2L
-	tn.Right = &tn1R
-	fmt.Println(inorderTraversal(&tn))
+	fmt.Println(inorderTraversal(&TreeNode{
+		Val: 1,
+		Right: &TreeNode{
+			Val: 2,
+			Left: &TreeNode{
+				Val: 3,
+			},
+		},
+	}))
+	// fmt.Println(inorderTraversal(&TreeNode{}))
+	// fmt.Println(inorderTraversal(&TreeNode{
+	// 	Val: 1,
+	// }))
 }
 
 func inorderTraversal(root *TreeNode) []int {
+	var arr []int
 	if root == nil {
-		return nil
+		return arr
 	}
 
-	res := make([]int, 0)
-	res = append(res, 1)
-	return res
+	arr = append(arr, inorderTraversal(root.Left)...)
+	arr = append(arr, root.Val)
+	arr = append(arr, inorderTraversal(root.Right)...)
+	return arr
 }
