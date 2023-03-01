@@ -9,27 +9,37 @@ type TreeNode struct {
 }
 
 func main() {
-	tnp := TreeNode{}
-	tnp.Val = 1
-
-	var tnq TreeNode
-
-	fmt.Println(isSameTree(&tnp, &tnq))
+	fmt.Println(isSameTree(&TreeNode{
+		Val: 1,
+		Left: &TreeNode{
+			Val: 2,
+		},
+		Right: &TreeNode{
+			Val: 3,
+		},
+	}, &TreeNode{
+		Val: 1,
+		Left: &TreeNode{
+			Val: 2,
+		},
+		Right: &TreeNode{
+			Val: 3,
+		},
+	}))
 }
 
 func isSameTree(p *TreeNode, q *TreeNode) bool {
+	if p == nil && q == nil {
+		return true
+	}
+
 	if p == nil || q == nil {
 		return false
 	}
 
-	if p.Val == q.Val {
-		return true
-	} else {
+	if p.Val != q.Val {
 		return false
 	}
 
-	left := isSameTree(p.Left, q.Left)
-	right := isSameTree(p.Right, q.Right)
-	fmt.Printf("check (%v) (%v)\n", p.Val, q.Val)
-	return left && right
+	return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
 }
