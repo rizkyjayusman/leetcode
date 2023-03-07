@@ -13,10 +13,17 @@ func kidsWithCandies(candies []int, extraCandies int) []bool {
 		return nil
 	}
 
-	g := candies[0] + extraCandies
-	var statuses []bool
-	for k := range candies {
-		statuses = append(statuses, candies[k]+extraCandies >= g)
+	max := candies[0]
+	for _, v := range candies {
+		if v > max {
+			max = v
+		}
 	}
+
+	var statuses []bool
+	for _, v := range candies {
+		statuses = append(statuses, v+extraCandies >= max)
+	}
+
 	return statuses
 }
