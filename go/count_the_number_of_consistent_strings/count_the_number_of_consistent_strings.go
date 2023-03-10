@@ -9,27 +9,26 @@ func main() {
 }
 
 func countConsistentStrings(allowed string, words []string) int {
-	count := 0
-	for _, r := range words {
-		for i := 0; i < len(r); i++ {
-			if r[i] == allowed[0] {
-				l := i + len(allowed)
-				if l > len(r) {
-					break
-				}
-
-				if l == len(r) {
-					if allowed == string(r[i:]) {
-						count++
-					}
-				} else {
-					if allowed == string(r[i:i+len(allowed)]) {
-						count++
-					}
-				}
-			}
+	m := make(map[rune]struct{})
+	for _, v := range allowed {
+		if _, ok := m[v]; !ok {
+			m[v] = struct{}{}
 		}
 	}
 
+	count := 0
+	for _, i := range words {
+		b := true
+		for _, v := range i {
+			if _, ok := m[v]; !ok {
+				b = false
+				break
+			}
+		}
+
+		if b {
+			count++
+		}
+	}
 	return count
 }
