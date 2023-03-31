@@ -1,37 +1,21 @@
 package main
 
-import "fmt"
-
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
 }
 
-func main() {
-	fmt.Println(inorderTraversal(&TreeNode{
-		Val: 1,
-		Right: &TreeNode{
-			Val: 2,
-			Left: &TreeNode{
-				Val: 3,
-			},
-		},
-	}))
-	// fmt.Println(inorderTraversal(&TreeNode{}))
-	// fmt.Println(inorderTraversal(&TreeNode{
-	// 	Val: 1,
-	// }))
-}
+type BinaryTreeInorderTraversal struct{}
 
-func inorderTraversal(root *TreeNode) []int {
+func (btit BinaryTreeInorderTraversal) InorderTraversal(root *TreeNode) []int {
 	var arr []int
 	if root == nil {
 		return arr
 	}
 
-	arr = append(arr, inorderTraversal(root.Left)...)
+	arr = append(arr, btit.InorderTraversal(root.Left)...)
 	arr = append(arr, root.Val)
-	arr = append(arr, inorderTraversal(root.Right)...)
+	arr = append(arr, btit.InorderTraversal(root.Right)...)
 	return arr
 }
