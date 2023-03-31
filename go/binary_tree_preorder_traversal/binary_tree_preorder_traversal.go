@@ -1,27 +1,21 @@
 package main
 
-import "fmt"
-
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
 }
 
-func main() {
-	fmt.Println(preorderTraversal(&TreeNode{
-		Val: 1,
-	}))
-}
+type BinaryTreePreorderTraversal struct{}
 
-func preorderTraversal(root *TreeNode) []int {
+func (btpot BinaryTreePreorderTraversal) PreorderTraversal(root *TreeNode) []int {
 	var arr []int
 	if root == nil {
 		return arr
 	}
 
 	arr = append(arr, root.Val)
-	arr = append(arr, preorderTraversal(root.Left)...)
-	arr = append(arr, preorderTraversal(root.Right)...)
+	arr = append(arr, btpot.PreorderTraversal(root.Left)...)
+	arr = append(arr, btpot.PreorderTraversal(root.Right)...)
 	return arr
 }
