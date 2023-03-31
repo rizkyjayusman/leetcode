@@ -1,13 +1,8 @@
 package main
 
-import "fmt"
+type BuildArrayFromPermutation struct{}
 
-func main() {
-	// fmt.Println(buildArray([]int{0, 2, 1, 5, 3, 4}))
-	fmt.Println(buildArray([]int{5, 0, 1, 2, 3, 4}))
-}
-
-func buildArray(nums []int) []int {
+func (bafp BuildArrayFromPermutation) BuildArray(nums []int) []int {
 	var arr []int
 	for _, v := range nums {
 		arr = append(arr, nums[v])
