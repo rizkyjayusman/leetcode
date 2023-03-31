@@ -1,15 +1,8 @@
 package main
 
-import (
-	"fmt"
-)
+type AddBinary struct{}
 
-func main() {
-	// fmt.Println(addBinary("11", "1"))
-	fmt.Println(addBinary("1010", "1011"))
-}
-
-func addBinary(a string, b string) string {
+func (ab AddBinary) addBinary(a string, b string) string {
 	// 1 :: 49
 	i := len(a) - 1
 	j := len(b) - 1
