@@ -1,13 +1,8 @@
 package main
 
-import "fmt"
+type CheckIfTheSentenceIsPangram struct{}
 
-func main() {
-	fmt.Println(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"))
-	fmt.Println(checkIfPangram("leetcode"))
-}
-
-func checkIfPangram(sentence string) bool {
+func (citsip CheckIfTheSentenceIsPangram) CheckIfPangram(sentence string) bool {
 	m := make(map[rune]struct{})
 	for _, v := range sentence {
 		if _, ok := m[v]; !ok {
