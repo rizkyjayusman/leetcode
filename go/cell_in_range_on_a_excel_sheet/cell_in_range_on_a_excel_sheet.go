@@ -2,12 +2,9 @@ package main
 
 import "fmt"
 
-func main() {
-	// fmt.Println(cellsInRange("K1:L2"))
-	fmt.Println(cellsInRange("A1:F1"))
-}
+type CellInRangeOnAExcelSheet struct{}
 
-func cellsInRange(s string) []string {
+func (ciroes CellInRangeOnAExcelSheet) CellsInRange(s string) []string {
 	i := s[0]
 	j := s[3]
 	var str []string
