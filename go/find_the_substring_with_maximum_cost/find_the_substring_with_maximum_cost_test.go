@@ -40,7 +40,7 @@ func TestFormSmallestNumberFromTwoDigitArrays3(t *testing.T) {
 }
 
 func TestFormSmallestNumberFromTwoDigitArrays4(t *testing.T) {
-	expected := 18
+	expected := 30
 	actual := ftswmc.MaximumCostSubstring("kqqqqqkkkq", "kq", []int{-6, 6})
 	t.Logf("expected : %v\n", expected)
 	t.Logf("actual : %v\n", actual)
