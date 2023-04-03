@@ -8,12 +8,9 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func main() {
-	print(sortedArrayToBST([]int{1, 3}))
-	// print(sortedArrayToBST([]int{-10, -3, 0, 5, 9}))
-}
+type ConvertSortedArrayToBinarySearchTree struct{}
 
-func print(root *TreeNode) {
+func (csa ConvertSortedArrayToBinarySearchTree) print(root *TreeNode) {
 	if root == nil {
 		return
 	}
@@ -23,7 +20,7 @@ func print(root *TreeNode) {
 	print(root.Right)
 }
 
-func sortedArrayToBST(nums []int) *TreeNode {
+func (csa ConvertSortedArrayToBinarySearchTree) SortedArrayToBST(nums []int) *TreeNode {
 	if len(nums) == 0 {
 		return nil
 	}
@@ -31,7 +28,7 @@ func sortedArrayToBST(nums []int) *TreeNode {
 	mid := len(nums) / 2
 	return &TreeNode{
 		Val:   nums[mid],
-		Left:  sortedArrayToBST(nums[:mid]),
-		Right: sortedArrayToBST(nums[mid+1:]),
+		Left:  csa.SortedArrayToBST(nums[:mid]),
+		Right: csa.SortedArrayToBST(nums[mid+1:]),
 	}
 }
