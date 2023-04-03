@@ -2,12 +2,9 @@ package main
 
 import "fmt"
 
-func main() {
-	fmt.Println(getConcatenation([]int{1, 2, 1}))
-	fmt.Println(getConcatenation([]int{1, 3, 2, 1}))
-}
+type ConcatenationOfArray struct{}
 
-func getConcatenation(nums []int) []int {
+func (coa ConcatenationOfArray) GetConcatenation(nums []int) []int {
 	l := len(nums)
 	for i := 0; i < l; i++ {
 		fmt.Println(i)
