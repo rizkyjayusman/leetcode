@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -11,9 +10,9 @@ var (
 
 func TestConvertSortedArrayToBinarySearchTree(t *testing.T) {
 	expected := &TreeNode{
-		Val: 1,
+		Val: 3,
 		Left: &TreeNode{
-			Val: 3,
+			Val: 1,
 		},
 	}
 	actual := csa.SortedArrayToBST([]int{1, 3})
@@ -22,17 +21,17 @@ func TestConvertSortedArrayToBinarySearchTree(t *testing.T) {
 
 func TestConvertSortedArrayToBinarySearchTree2(t *testing.T) {
 	expected := &TreeNode{
-		Val: -3,
+		Val: 0,
 		Left: &TreeNode{
-			Val: -10,
+			Val: -3,
 			Left: &TreeNode{
-				Val: -3,
+				Val: -10,
 			},
 		},
 		Right: &TreeNode{
-			Val: 5,
+			Val: 9,
 			Left: &TreeNode{
-				Val: 9,
+				Val: 5,
 			},
 		},
 	}
@@ -49,11 +48,10 @@ func compare(expected *TreeNode, actual *TreeNode, t *testing.T) {
 		t.Error("FAIL ~ value is not match")
 	}
 
-	if expected.Val != expected.Val {
-		t.Error("FAIL ~ value is not match")
+	if expected.Val != actual.Val {
+		t.Errorf("FAIL ~ value (%v %v) is not match", expected.Val, actual.Val)
 	}
 
-	fmt.Println(expected.Val, actual.Val)
 	compare(expected.Left, actual.Left, t)
 	compare(expected.Right, actual.Right, t)
 }
